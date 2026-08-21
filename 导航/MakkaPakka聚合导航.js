@@ -32,7 +32,7 @@ const CACHE_TTL_MS = parseInt(process.env.MAKKA_WIDGET_CACHE_MS || "1800000", 10
 // TMDB API 基础地址（已替换为免翻墙镜像接口）
 const TMDB_API_BASE_URL =
   process.env.TMDB_API_BASE_URL ||
-  "https://tmdb.api.raw.ninja/3";
+  "https://api.tmdb.org/3";
 
 // TMDB 令牌 / Key（已填入你的专属 Key）
 const TMDB_BEARER_TOKEN = (process.env.TMDB_BEARER_TOKEN || "").trim();
