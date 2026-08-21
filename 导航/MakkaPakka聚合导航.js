@@ -20,7 +20,7 @@ const cheerio = require("cheerio");
  * ==================== 配置区域结束 ==================== */
 
 // ===== 支持环境变量覆盖的配置（优先级最高） =====
-// Widget 源地址：支持环境变量覆盖，默认走 gh-proxy 直链，避免 raw 域名在部分环境下不稳定。
+// Widget 源地址：默认走 gh-proxy 直链
 const WIDGET_URL =
   process.env.MAKKA_WIDGET_URL ||
   "https://gh-proxy.org/raw.githubusercontent.com/MakkaPakka518/FW/refs/heads/main/widgets/mk-2.0/MakkaPakka-ALL.js";
@@ -28,16 +28,19 @@ const WIDGET_URL =
 const REQUEST_TIMEOUT_MS = parseInt(process.env.MAKKA_WIDGET_TIMEOUT_MS || "20000", 10);
 // Widget 源缓存 TTL（毫秒）。
 const CACHE_TTL_MS = parseInt(process.env.MAKKA_WIDGET_CACHE_MS || "1800000", 10);
-// TMDB API 基础地址。
+
+// TMDB API 基础地址（已替换为免翻墙镜像接口）
 const TMDB_API_BASE_URL =
   process.env.TMDB_API_BASE_URL ||
-  "https://api.tmdb.org/3";
-// TMDB 令牌 / Key：按兼容优先级依次读取。
+  "https://tmdb.api.raw.ninja/3";
+
+// TMDB 令牌 / Key（已填入你的专属 Key）
 const TMDB_BEARER_TOKEN = (process.env.TMDB_BEARER_TOKEN || "").trim();
 const TMDB_AUTH_TOKEN = (process.env.TMDB_AUTH_TOKEN || "").trim();
 const TMDB_ACCESS_TOKEN = (process.env.TMDB_ACCESS_TOKEN || "").trim();
 const TMDB_API_KEY = (process.env.TMDB_API_KEY || "").trim();
-const TMDB_KEY = (process.env.TMDB_KEY || "").trim();
+const TMDB_KEY = (process.env.TMDB_KEY || "fca687d0820938fe43f807dcb3e33de8").trim();
+
 // 外部请求日志里 body 预览的最大长度。
 const EXTERNAL_LOG_BODY_LIMIT = parseInt(process.env.MAKKA_EXTERNAL_LOG_BODY_LIMIT || "400", 10);
 // 是否打印更详细的外部响应体预览：1 开启，0 关闭。
@@ -519,7 +522,6 @@ function mapSingleItem(item, index, typeName, context) {
   }
 
   return {
-    // 保留原始 id / tmdbId，并通过 search 提示宿主走搜索跳转。
     vod_id: String(item.tmdbId || item.id || `${typeName}_${index + 1}`),
     vod_name: title,
     vod_pic: posterPath,
