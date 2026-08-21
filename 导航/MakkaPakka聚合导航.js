@@ -37,7 +37,7 @@ const TMDB_API_BASE_URL =
 // TMDB 令牌 / Key（已填入你的专属 Key）
 const TMDB_BEARER_TOKEN = (process.env.TMDB_BEARER_TOKEN || "").trim();
 const TMDB_AUTH_TOKEN = (process.env.TMDB_AUTH_TOKEN || "").trim();
-const TMDB_ACCESS_TOKEN = (process.env.TMDB_ACCESS_TOKEN || "").trim();
+const TMDB_ACCESS_TOKEN = (process.env.TMDB_ACCESS_TOKEN || "fca687d0820938fe43f807dcb3e33de8").trim();
 const TMDB_API_KEY = (process.env.TMDB_API_KEY || "").trim();
 const TMDB_KEY = (process.env.TMDB_KEY || "fca687d0820938fe43f807dcb3e33de8").trim();
 
