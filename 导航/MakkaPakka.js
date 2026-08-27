@@ -67,7 +67,9 @@ const state = {
 module.exports = {
   home,
   category,
+  detail,
 };
+
 
 runner.run(module.exports);
 
@@ -267,7 +269,7 @@ async function loadWidgetRuntime(force = false) {
   try {
     vm.runInContext(scriptText, sandbox, {
       filename: "MakkaPakka-ALL.js",
-      timeout: REQUEST_TIMEOUT_MS,
+      timeout: REQUEST_TIMEOUT_MS，
     });
   } catch (error) {
     await logErrorWithStack("Makka导航 Widget 脚本执行失败", error);
@@ -303,8 +305,8 @@ function createWidgetSandbox() {
     Buffer,
     setTimeout,
     clearTimeout,
-    encodeURIComponent,
-    decodeURIComponent,
+    encodeURIComponent，
+    decodeURIComponent，
     parseInt,
     parseFloat,
     isNaN,
@@ -670,4 +672,21 @@ async function safeLog(level, message) {
   try {
     await OmniBox.log(level, message);
   } catch (_) {}
+}
+async function detail(params, context) {
+  const vodId = String(params.vod_id || params.id || "");
+  await safeLog("info", `Makka导航 detail 调用: vod_id=${vodId}`);
+
+  return {
+    list: [
+      {
+        vod_id: vodId,
+        vod_name: vodId,
+        vod_remarks: "导航卡片",
+        vod_content: "聚合导航卡片，点击下方链接跳往 TMDB 页面",
+        vod_play_from: "TMDB 搜索",
+        vod_play_url: `网页搜索$https://www.themoviedb.org/search?query=${encodeURIComponent(vodId)}`,
+      },
+    ],
+  };
 }
