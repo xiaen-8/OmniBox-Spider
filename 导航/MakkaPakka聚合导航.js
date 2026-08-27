@@ -1,4 +1,4 @@
-// @name MakkaPakka聚合导航
+// @name MakkaPakka
 // @author 梦
 // @description 基于 AstrBot Widget 通用桥接的 OmniBox 导航源，动态读取远端 Widget Metadata 与模块函数，支持顶部集中配置与详细外部请求日志
 // @indexs 1
