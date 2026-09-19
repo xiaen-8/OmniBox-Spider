@@ -54,7 +54,7 @@ function loadSpider(source, filename) {
 }
 
 test("蜗牛4K supports the panlian_dark page structure", () => {
-  assert.equal(getVersion(standalone), "1.0.2");
+  assert.equal(getVersion(standalone), "1.0.3");
   assert.match(standalone, /\$\("a\.video-card"\)/);
   assert.match(standalone, /\.mobile-detail-title/);
   assert.match(standalone, /\.premium-meta-grid \.meta-item/);
