@@ -75,7 +75,7 @@ function loadSpider(files) {
 const detailUrl = "https://wbbb1.com/detail/114814.html";
 
 test("metadata upgrades the cookie challenge workaround", () => {
-  assert.equal(source.match(/@version\s+([^\n*]+)/)?.[1].trim(), "1.0.6");
+  assert.equal(source.match(/@version\s+([^\n*]+)/)?.[1].trim(), "1.0.7");
   assert.match(source, /mergeCookies\(res\.headers\?\.\['set-cookie'\]\)/);
   assert.match(source, /looksLikeCookieChallenge/);
 });
